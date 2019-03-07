@@ -4,7 +4,9 @@ var fibonacci = {
         var pre = 0, cur = 1
         return {
            next () {
-               [ pre, cur ] = [ cur, pre + cur ]
+                var tmp = cur
+                cur = cur + pre
+                pre = tmp
                return { done: false, value: cur }
            }
         }
@@ -17,4 +19,4 @@ for (var n of fibonacci) {
         break
     results.push(n)
 }
-assert( results === "[1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987]")
+assert(results.toString() === "1,2,3,5,8,13,21,34,55,89,144,233,377,610,987")
